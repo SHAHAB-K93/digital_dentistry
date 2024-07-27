@@ -1,41 +1,41 @@
-// تعریف لیست نقاط
-            List<Point> points = new List<Point>();
-            points.Add(Na);
-            points.Add(S);
-            points.Add(Or);
-            points.Add(ANS);
-            points.Add(PNS);
-            points.Add(Ar);
-            points.Add(Go);
-            points.Add(Me);
-            // تعریف لیست نقاط فرعی
-            List<Point> intermediatePoints = new List<Point>();
+// Define the list of points
+List<Point> points = new List<Point>();
+points.Add(Na);
+points.Add(S);
+points.Add(Or);
+points.Add(ANS);
+points.Add(PNS);
+points.Add(Ar);
+points.Add(Go);
+points.Add(Me);
 
-            Point previousPoint = points[0]; // نقطه قبلی را برابر با اولین نقطه در نظر می‌گیریم
+// Define the list of intermediate points
+List<Point> intermediatePoints = new List<Point>();
 
-            for (int index = 1; index < points.Count; index++)
-            {
+Point previousPoint = points[0]; // Consider the previous point as the first point
 
-                Point currentPoint = points[index];
+for (int index = 1; index < points.Count; index++)
+{
+    Point currentPoint = points[index];
 
-                int Xm = (previousPoint.X + currentPoint.X) / 2;
-                int Ym = (previousPoint.Y + currentPoint.Y) / 2;
+    int Xm = (previousPoint.X + currentPoint.X) / 2;
+    int Ym = (previousPoint.Y + currentPoint.Y) / 2;
 
-                Point intermediatePoint = new Point { X = Xm, Y = Ym };
-                intermediatePoints.Add(intermediatePoint);
+    Point intermediatePoint = new Point { X = Xm, Y = Ym };
+    intermediatePoints.Add(intermediatePoint);
 
-                for (int i = 1; i <= n; i++)
-                {
-                    int Xn = previousPoint.X + (currentPoint.X - previousPoint.X) * i / (n + 1);
-                    int Yn = previousPoint.Y + (currentPoint.Y - previousPoint.Y) * i / (n + 1);
+    for (int i = 1; i <= n; i++)
+    {
+        int Xn = previousPoint.X + (currentPoint.X - previousPoint.X) * i / (n + 1);
+        int Yn = previousPoint.Y + (currentPoint.Y - previousPoint.Y) * i / (n + 1);
 
-                    Point newLandmark = new Point { X = Xn, Y = Yn };
-                    intermediatePoints.Add(newLandmark);
-                }
+        Point newLandmark = new Point { X = Xn, Y = Yn };
+        intermediatePoints.Add(newLandmark);
+    }
 
-                previousPoint = currentPoint;
-            }
+    previousPoint = currentPoint;
+}
 
-            List<Point> Final_landmarks = new List<Point>();
-Final_landmarks.AddRange(points)
-Final_landmarks.AddRange(intermediatePoints);
+List<Point> finalLandmarks = new List<Point>();
+finalLandmarks.AddRange(points);
+finalLandmarks.AddRange(intermediatePoints);
